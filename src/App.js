@@ -1,25 +1,19 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import {useDispatch} from "react-redux";
+
+import { setSearchTerm } from "./actions";
+
 import Textbox from "./components/Textbox";
-import {selectCitiesByName} from "./selectors";
+import CitiesTable from "./components/CitiesTable";
 
 function App() {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const cities = useSelector((state) => selectCitiesByName(state, searchTerm));
+  const dispatch = useDispatch();
 
   return (
     <div>
       <h1>React Typeahead</h1>
-      <Textbox onChange={(evt) => setSearchTerm(evt.target.value)} />
-      {/* todo: extract into table component */}
-      <table>
-        <tbody>
-          {cities.map((city, idx) => <tr key={idx}>
-            <td>{city.name}</td>
-            <td>{city.country}</td>
-          </tr>)}
-        </tbody>
-      </table>
+      <Textbox onChange={(evt) => dispatch(setSearchTerm(evt.target.value))} />
+      <CitiesTable />
     </div>
   );
 }

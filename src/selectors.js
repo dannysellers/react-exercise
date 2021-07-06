@@ -1,11 +1,11 @@
 // todo: use createSelector for memoization
-export const selectCitiesByName = (state, name = '') => {
-  const { cities } = state;
+export const selectCitiesByName = (state) => {
+  const { cities, searchTerm = '' } = state;
 
-  if (name === '' || name.length < 2) {
+  if (searchTerm.length < 2) {
     // todo: alternatively, debounce filtering
     return [];
   }
 
-  return cities.filter((city) => city.name.includes(name));
+  return cities.filter((city) => city.name.includes(searchTerm));
 }
