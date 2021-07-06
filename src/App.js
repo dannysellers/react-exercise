@@ -5,6 +5,7 @@ import {setSearchTerm} from "./actions";
 
 import Textbox from "./components/Textbox";
 import CitiesTable from "./components/CitiesTable";
+import CityDetail from "./components/CityDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function App() {
           <CitiesTable/>
         </div>
         <div style={{ float: 'right' }}>
-          City info section
+          <CityDetail />
         </div>
       </div>
     </>

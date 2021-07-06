@@ -2,6 +2,7 @@
 import cities from './us-cities.json';
 import { ACTIONS } from "./constants";
 /**
+ * todo: assign cities `id` attr
  * type Cities = {
  *   "country": "US",
  *   "name": "Bay Minette",
@@ -17,6 +18,8 @@ import { ACTIONS } from "./constants";
 
 const initialState = {
   cities,
+  // todo: store only active city `id` here--filter `cities` in (memoized) selector
+  activeCity: null, // i.e. `?CityType`
   searchTerm: ''
 };
 
@@ -26,6 +29,11 @@ const baseReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchTerm: action.payload
+      }
+    case ACTIONS.SET_ACTIVE_CITY:
+      return {
+        ...state,
+        activeCity: action.payload
       }
     default:
       return state;

@@ -9,3 +9,6 @@ export const selectCitiesByName = (state) => {
 
   return cities.filter((city) => city.name.includes(searchTerm));
 }
+
+// todo: select city object by `id`
+export const selectActiveCity = (state) => state.activeCity;

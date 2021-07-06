@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {selectCitiesByName} from "../selectors";
+import { setActiveCity } from "../actions";
 
 const CitiesTable = () => {
+  const dispatch = useDispatch();
   const cities = useSelector(selectCitiesByName);
 
   return <table>
@@ -15,7 +17,12 @@ const CitiesTable = () => {
     </thead>
     <tbody>
     {cities.map((city, idx) => <tr key={idx}>
-      <td>{city.name}</td>
+      <td>
+        {/* todo: use `city.id` */}
+        <button onClick={() => dispatch(setActiveCity(city))}>
+          {city.name}
+        </button>
+      </td>
       <td>{city.country}</td>
       <td>{city.details.likes}</td>
     </tr>)}
