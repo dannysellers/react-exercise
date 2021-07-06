@@ -1,13 +1,22 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import styled from "@emotion/styled";
+
 import {selectCitiesByName} from "../selectors";
 import { setActiveCity } from "../actions";
+
+const Container = styled.table({
+  lineHeight: '1.25rem',
+  'tbody > tr:nth-child(2n + 1)': {
+    backgroundColor: 'lightgrey'
+  }
+});
 
 const CitiesTable = () => {
   const dispatch = useDispatch();
   const cities = useSelector(selectCitiesByName);
 
-  return <table>
+  return <Container>
     <thead>
       <tr>
         <td>Name</td>
@@ -27,7 +36,7 @@ const CitiesTable = () => {
       <td>{city.details.likes}</td>
     </tr>)}
     </tbody>
-  </table>
+  </Container>
 }
 
 export default CitiesTable;
