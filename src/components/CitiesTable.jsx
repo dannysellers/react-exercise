@@ -7,9 +7,11 @@ const CitiesTable = () => {
 
   return <table>
     <thead>
-      <td>Name</td>
-      <td>Country</td>
-      <td>Likes</td>
+      <tr>
+        <td>Name</td>
+        <td>Country</td>
+        <td>Likes</td>
+      </tr>
     </thead>
     <tbody>
     {cities.map((city, idx) => <tr key={idx}>
